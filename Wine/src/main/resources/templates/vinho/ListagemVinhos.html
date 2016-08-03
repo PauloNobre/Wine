@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+	
+<head>
+	<title>Listagem de Vinhos</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>
+						Lista de Vinhos
+					</h1>
+				</div>
+			
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn btn-primary" th:href="@{/vinhos/novo}">
+							<i class="fa  fa-plus-circle"></i> <span class="hidden-xs  hidden-sm">Novo produto</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="table-responsive">
+			<table id="tabela-produtos" class="table  table-striped  table-bordered  table-hover  table-condensed  js-sticky-table">
+				<thead class="aw-table-header-solid">
+					<tr>
+						<th>Código</th>
+						<th>Nome</th>
+						<th>Tipo</th>
+						<th>Safra</th>
+						<th>Volume</th>
+						<th>Valor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="vinho : ${vinhos}">
+						<td th:text="${vinho.codigo}"></td>
+						<td th:text="${vinho.nome}"><a href="#"></a></td>
+						<td th:text="${vinho.tipo}"></td>
+						<td th:text="${vinho.safra}"></td>
+						<td th:text="${vinho.volume}"></td>
+						<td th:text="${vinho.valor}"></td>
+					</tr>
+					<tr th:if="${vinhos.empty}">
+						<td colspan="6">Nenhum vinho cadastrado</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</section>
+</body>
+</html>
