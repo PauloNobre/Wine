@@ -21,8 +21,10 @@
 
 	<div class="container-fluid">
 		<div class="rol">
-			<div class="col-sm-9">
-				<div id="upload-drop" class="wn-upload" th:attr="data-codigo=${vinho.codigo}">
+			<div class="col-sm-9 js-container-foto">
+				<img th:src="${vinho.url}" th:if="${vinho.temFoto()}" />
+			
+				<div th:if="${not vinho.temFoto()}" id="upload-drop" class="wn-upload" th:attr="data-codigo=${vinho.codigo}">
 					<img th:src="@{/images/mockup-garrafa.jpg}"/>
 					<div>
 						<span>Arraste a foto aqui ou</span>

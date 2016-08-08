@@ -56,6 +56,10 @@ public class VinhosController {
 	public ModelAndView detalhes(@PathVariable("codigo") Vinho vinho) {
 		ModelAndView mv= new ModelAndView("/vinho/VisualizarVinho");
 		mv.addObject("vinho", vinho);
+		
+		if(vinho.temFoto()) {
+			vinho.setUrl("http://localhost:9444/s3/wine/" + vinho.getFoto() + "?noAuth=true");
+		}
 		return mv;
 	}
 }

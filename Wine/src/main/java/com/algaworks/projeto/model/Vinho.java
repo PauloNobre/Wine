@@ -9,9 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.util.StringUtils;
 
 @Entity
 @Table(name = "vinho")
@@ -37,6 +39,9 @@ public class Vinho {
 	@NotNull(message = "Valor é obrigatório")
 	private BigDecimal valor;
 
+	@Transient
+	private String url;
+	
 	private String foto;
 	
 	public Long getCodigo() {
@@ -81,6 +86,17 @@ public class Vinho {
 	}
 	public void setFoto(String foto) {
 		this.foto= foto;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public boolean temFoto() {
+		return !StringUtils.isEmpty(foto);
 	}
 	
 	@Override

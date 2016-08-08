@@ -23,7 +23,7 @@ public class FotosController {
 	public Foto upload(@PathVariable("codigo") Vinho vinho,
 			@RequestParam("files[]") MultipartFile[] files) {
 		
-		vinhoService.adicionarFoto(vinho, files[0].getOriginalFilename());
-		return new Foto(files[0].getOriginalFilename());
+		String url = vinhoService.adicionarFoto(vinho, files[0]);
+		return new Foto(url);
 	}
 }
