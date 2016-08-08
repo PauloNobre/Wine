@@ -14,4 +14,8 @@ public class VinhoService {
 	public void salvar(Vinho vinho) {
 		this.vinhoRepository.save(vinho);
 	}
+	public void adicionarFoto(Vinho vinho, String foto) {
+		vinho.setFoto(foto);
+		vinhoRepository.save(vinho);
+	}
 }

@@ -47,7 +47,7 @@
 				<tbody>
 					<tr th:each="vinho : ${vinhos}">
 						<td th:text="${vinho.codigo}"></td>
-						<td th:text="${vinho.nome}"><a href="#"></a></td>
+						<td ><a th:href="@{/vinhos/{codigo}(codigo=${vinho.codigo})}" th:text="${vinho.nome}"></a></td>
 						<td th:text="${vinho.tipo.descricao}"></td>
 						<td th:text="${vinho.safra}"></td>
 						<td th:text="${vinho.volume}"></td>

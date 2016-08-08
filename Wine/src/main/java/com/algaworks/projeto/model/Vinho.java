@@ -36,6 +36,8 @@ public class Vinho {
 	
 	@NotNull(message = "Valor é obrigatório")
 	private BigDecimal valor;
+
+	private String foto;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -72,6 +74,13 @@ public class Vinho {
 	}
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+	
+	public String getFoto() {
+		return this.foto;
+	}
+	public void setFoto(String foto) {
+		this.foto= foto;
 	}
 	
 	@Override
