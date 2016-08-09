@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.algaworks.projeto.dto.Foto;
 import com.algaworks.projeto.model.Vinho;
 import com.algaworks.projeto.service.VinhoService;
+import com.algaworks.projeto.storage.FotoReader;
 
 @RestController
 @RequestMapping("/fotos")
@@ -18,6 +19,9 @@ public class FotosController {
 	
 	@Autowired
 	private VinhoService vinhoService;
+	
+	@Autowired(required = false)
+	private FotoReader fotoReader;
 
 	@RequestMapping(value="/{codigo}", method = RequestMethod.POST)
 	public Foto upload(@PathVariable("codigo") Vinho vinho,
@@ -25,5 +29,10 @@ public class FotosController {
 		
 		String url = vinhoService.adicionarFoto(vinho, files[0]);
 		return new Foto(url);
+	}
+	
+	@RequestMapping("/{nome:.*}")
+	public byte[] recuperarFoto(@PathVariable String nome) {
+		return fotoReader.recuperar(nome);
 	}
 }
