@@ -23,6 +23,9 @@
 </head>
 <body>
 
+<input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}"/>
+<input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+
 <div class="aw-layout-page">
 	
 	<nav class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference" id="main-navbar">
@@ -41,6 +44,10 @@
 	    </div>
 
 	    <ul class="nav navbar-nav  navbar-right">
+	    	<li>
+	    		<p class="navbar-text" th:text="${#authentication.name}"></p>
+	    	</li>
+	    
 	      <li>
 	        <a th:href="@{/logout}"><em class="fa  fa-sign-out"></em></a>
 	      </li> 
@@ -61,7 +68,7 @@
           			</a>
 	        		</li>
 	        		
-	        		<li class="aw-menu__item">
+	        		<li class="aw-menu__item" sec:authorize-url="/vinhos">
           			<a th:href="@{/vinhos}">
           				<i class="fa  fa-fw  fa-search"></i>
           				<span>Lista de vinhos</span>

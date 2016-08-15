@@ -10,6 +10,11 @@ $(function() {
 		complete: function(foto) {
 			uploadDrop.addClass('hidden');
 			containerFoto.prepend('<img src="' + foto.url + '" class="img-responsive" style="margin: auto"/>');
+		},
+		beforeSend: function(xhr) {
+			var header = $('input[name=_csrf_header]').val();
+			var token = $('input[name=_csrf]').val();
+			xhr.setRequestHeader(header, token);
 		}
 	};
 	
